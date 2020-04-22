@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block conatent %}
+
+        <div class="container main-part">
+            <h4>Coronavirus Statistics</h4>
+            <h5>Countries where Covid19 Coronavirus has spread.<p id="demo"></p></h5>
+            <div class="social-media">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+                    <img src="https://img.icons8.com/color/48/000000/facebook-new.png"/></a>
+
+            <a href="https://api.whatsapp.com/send?phone=whatsappphonenumber&text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share">
+            <img src="https://img.icons8.com/color/48/000000/whatsapp.png"/></a>
+
+            <a href="https://twitter.com/home?status=I'm%20going%20to%20learn%20to%20Code...%20Come%20build%20an%20web%20apsp%20with%20me!%20%23CFE%20and%20@justinmitchel%20{{ request.build_absolute_uri }}">
+            <img src="https://img.icons8.com/color/48/000000/twitter-squared.png"/></a>
+
+            <a href="mailto:?subject=Sharing Link&body={{ request.build_absolute_uri }}">
+                <img src="https://img.icons8.com/color/48/000000/google-plus-squared.png"/></a>
+
+            <a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}&text=Share Link">
+            <img src="https://img.icons8.com/color/48/000000/telegram-app.png"/> </a>
+
+            </div><br>
+            <div class="row">
+                <div class="col-sm-3 data-box">
+                    <p style="color: rgb(113, 228, 113);">
+                        <span><i class="fas fa-check"></i>{{total_confirm}}</span><br>
+                        <span>Total Confirmed Cases</span>
+                    </p>
+                </div>
+                <div class="col-sm-3 data-box">
+                <p style="color: rgb(238, 113, 113);">
+                    <span><i class="fas fa-exclamation"></i>{{total_decresed}}</span><br>
+                    <span>Total Decreased Cases</span>
+                </p>
+            </div>
+            <div class="col-sm-3 data-box">
+                <p style="color: rgb(76, 186, 230);">
+                    <span><i class="fas fa-heart"></i>{{total_recovered}}</span><br>
+                    <span>Total Recovered Cases</span>
+                </p>
+            </div>
+            <div class="col-sm-3 data-box">
+                <p style="color:rgb(219, 219, 92);">
+                    <span><i class="fas fa-bed"></i>{{total_serious}}</span><br>
+                    <span>Total Serious Cases</span>
+                </p>
+            </div>
+            </div><br>
+            <!--Search Box-->
+            <form class="example" action="#">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+            <button type="submit"><i class="fa fa-window-close" aria-hidden="true"></i>Clear</button>
+            </form> <br>
+
+    
+            <!--Data of the country-->
+            <div class = "table__wrapper clearfix">
+            <table class="sub_table1">
+                <thead>
+                <tr>
+                    <th>Details</th>
+                </tr>
+                </thead>
+                {% for data in region %}
+                <tbody>
+                <tr>
+                    <td><a href="/map_home/{{data}}"><span style="color: rgb(40, 233, 40);"><i class="fas fa-signal"></i>See Graph</span></a></td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <table class="sub_table2">
+                <thead>
+                <tr>
+                    <th>Serious</th>
+                </tr>
+                </thead>
+                {% for value in serious %}
+                <tbody>
+                <tr>
+                    <td>{{value}}</td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <table class="sub_table3">
+                <thead>
+                <tr>
+                    <th>Recovered</th>
+                </tr>
+                </thead>
+                {% for value in recovered %}
+                <tbody>
+                <tr>
+                    <td>{{value}}</td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <table class="sub_table4">
+                <thead>
+                <tr>
+                    <th >Deceased</th>
+                </tr>
+                </thead>
+                {% for value in deceased %}
+                <tbody>
+                <tr>
+                    <td>{{value}}</td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <table class="sub_table5">
+                <thead>
+                <tr>
+                    <th>Confirmed</th>
+                </tr>
+                </thead>
+                {% for value in confirmed %}
+                <tbody>
+                <tr>
+                    <td>{{value}}</td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <table class="sub_table6" id="myTable">
+                <thead>
+                <tr>
+                    <th>Region</th>
+                </tr>
+                </thead>
+                {% for value in region %}
+                <tbody>
+                <tr>
+                    <td>{{value}}</td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        </div>
+            
+
+        <script>
+            var d = new Date();
+            d.setMinutes( d.getMinutes() - 20 );
+            var d = "Last updated :  "+d ;
+            document.getElementById("demo").innerHTML = d;
+        </script>
+
+        <script>
+          /*  function myFunction() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                  td = tr[i].getElementsByTagName("td")[0];
+                  if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      tr[i].style.display = "";
+                    } else {
+                      tr[i].style.display = "none";
+                    }
+                  }       
+                }
+              } */
+        </script>
+
+
+{% endblock %}

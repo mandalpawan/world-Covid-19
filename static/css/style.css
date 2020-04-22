@@ -1,0 +1,215 @@
+
+body{
+    background-color: black;
+}
+
+/* Change Brand Font */
+.navbar-brand{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  /* Change Navigation Color */
+  .navbar #myMenu .custom-nav .nav-item a {
+    color: #fff;
+  }
+  .navbar #myMenu .custom-nav .nav-item a:hover{
+    color: #F0AAB1;
+  }
+  
+  /* Make Header Image Responsive */
+  .back-image {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 70vh;
+    border-radius: 0px;
+    margin-top: 74px;
+  }
+  
+  /* Header Image Sub-Title */
+  .st {
+    font-size: 24px;
+  }
+  
+  /* Change Footer Social Icon Color */
+  a {
+    color:  rgb(255, 255, 255);
+  }
+  a:hover {
+    color: #E994A2;
+  }
+
+
+  /*  my code            */
+.buy{
+    background-color: #DC3545;
+    border: none;
+    padding: 15px;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.main-part{
+    margin-top: 90px;
+    color: #fff;
+}
+.data-box{
+    text-align: center;
+    background-color: rgba(124, 124, 124,0.2);
+    border-radius: 3px;
+    border: 0.5px solid white;
+    font-weight: 600;
+    padding-top: 10px;
+}
+/*Search Box*/
+/* Style the search field */
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 90%;
+    background: #f1f1f1;
+  }
+  
+  /* Style the submit button */
+  form.example button {
+    float: left;
+    width: 10%;
+    padding: 10px;
+    background: rgb(251, 63, 57);
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  form.example button:hover {
+    background: #f51212;
+  }
+  
+  /* Clear floats */
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .data{
+      border: 1px solid gray;
+      text-align: center;
+      background-color: rgba(134, 133, 133,0.2);
+  }
+
+  .data1{
+    border: 1px solid gray;
+    font-weight: 500;
+    background-color: rgba(134, 133, 133,0.2);
+  }
+
+
+  thead tr th{
+    padding: 8px;
+    text-align: center;
+  }
+
+  .sub_table1{
+    width: 15%;
+    border: 1px solid #fff;
+    float: right;
+    background-color: rgba(134, 133, 133,0.2);
+  }
+  .sub_table1 tr td{ 
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #fff;
+    font-weight: 500;
+    color: rgb(33, 200, 33);
+  }
+
+  .sub_table2{
+    width: 15%;
+    border: 1px solid #fff;
+    float: right;
+    background-color: rgba(134, 133, 133,0.2);
+  }
+  .sub_table2 tr td{ 
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #fff;
+    font-weight: 500;
+    color: rgb(241, 238, 63);
+  }
+
+  .sub_table3{
+    width: 15%;
+    border: 1px solid #fff;
+    float: right;
+    background-color: rgba(134, 133, 133,0.2);
+  }
+  .sub_table3 tr td{ 
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #fff;
+    font-weight: 500;
+    color: rgb(67, 151, 246);
+  }
+
+  .sub_table4{
+    width: 15%;
+    border: 1px solid #fff;
+    float: right;
+    background-color: rgba(134, 133, 133,0.2);
+  }
+  .sub_table4 tr td{ 
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #fff;
+    font-weight: 500;
+    color: rgb(238, 64, 64);
+  }
+
+  .sub_table5{
+    width: 15%;
+    border: 1px solid #fff;
+    float: right;
+    background-color: rgba(134, 133, 133,0.2);
+  }
+  .sub_table5 tr td{ 
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #fff;
+    font-weight: 500;
+    color: rgb(88, 241, 88);
+  }
+
+  .sub_table6{
+    width: 25%;
+    border: 1px solid #fff;
+    float: right;
+    background-color: rgba(134, 133, 133,0.2);
+  }
+  
+ 
+  .sub_table6 tr td{ 
+    padding: 8px;
+    border: 1px solid #fff;
+  }
+
+  .clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+
+  /* Media Queries */
+  /* @media only screen and (max-width: 600px) {
+   .table__wrapper {
+     border: 2px solid red;
+   }
+  } */

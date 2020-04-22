@@ -1,0 +1,301 @@
+{% extends 'base.html' %}
+
+    {% block conatent %}
+        <div class="container main-part">
+        <div class="graph">
+        <h1>Data Statics For {{covid_data}}</h1> 
+        <h4 style="text-align: center;margin-top:10px;">Total Confirmed Cases</h4>
+        </div>
+        <div id="myChart"></div>
+        <div id="myLine"></div>
+
+        <h4 style="text-align: center;margin-top:10px;">Total Recovered Cases</h4>
+        <div id="myChartrec"></div>
+        <div id="myLinerec"></div>
+
+        <h4 style="text-align: center;margin-top:10px;">Total Decreased Cases</h4>
+        <div id="myChartdet"></div>
+        <div id="myLinedet"></div>
+    </div>
+
+    
+
+    <script>
+
+        /*Display Total case Data*/
+        var state ={	
+            'items':[],
+            'values':[],
+        }
+
+        var rec ={	
+            'items':[],
+            'values':[],
+        }
+
+        var objId = "{{covid_data}}"
+        console.log(objId);
+        var dataURL = `/map_data/${objId}/`
+
+        /*Ajax Calling*/
+        $.ajax({
+            method:'GET',
+            url:dataURL,
+            success:function(response){
+                console.log('RESPONSE:', response)
+                for (var i in response){
+
+                    var key = Object.keys(response[i])[0]
+                    var value = Object.values(response[i])[0]
+                    
+
+                    state.items.push(key)
+                    state.values.push(value)
+
+                
+                }
+                console.log('STATE:', state)
+            
+                buildChart()
+                buildChartLine()
+            }
+            
+        })
+        /*For Bar Chart*/
+
+        function buildChart(){
+            var value = state.values
+                var result = value.map(function (x) { 
+                return parseInt(x, 10); 
+                });
+            var chartData = {
+            "type":"bar",
+            "scale-x":{
+                "values": state.items
+            },
+            "series":[
+                {
+                    "values":result
+                }
+            ]
+        }
+
+
+        zingchart.render({
+        id: "myChart",
+        data: chartData,
+        });
+    }
+
+        /*For Line Chart*/
+        function buildChartLine(){
+            var value = state.values
+                var result = value.map(function (x) { 
+                return parseInt(x, 10); 
+                });
+            var chartData = {
+            "type":"line",
+            "scale-x":{
+                "values": state.items
+            },
+            "series":[
+                {
+                    "values":result
+                }
+            ]
+        }
+
+
+        zingchart.render({
+        id: "myLine",
+        data: chartData,
+        });
+    }
+
+            /*Display Recovery case Data*/
+            var recovery ={	
+                'items':[],
+                'values':[],
+            }
+
+            var rec ={	
+                'items':[],
+                'values':[],
+            }
+
+            var objId = "{{covid_data}}"
+            console.log(objId);
+            var dataURL = `/map_datarec/${objId}/`
+
+            /*Ajax Calling*/
+            $.ajax({
+                method:'GET',
+                url:dataURL,
+                success:function(response){
+                    console.log('RESPONSE:', response)
+                    for (var i in response){
+
+                        var key1 = Object.keys(response[i])[0]
+                        var value1 = Object.values(response[i])[0]
+                        
+
+                        recovery.items.push(key1)
+                        recovery.values.push(value1)
+
+                    
+                    }
+                    console.log('recovery:', recovery)
+                
+                    buildChartrec()
+                    buildChartLinerec()
+                }
+                
+            })
+            /*For Bar Chart*/
+
+            function buildChartrec(){
+                var value = recovery.values
+                    var result = value.map(function (x) { 
+                    return parseInt(x, 10); 
+                    });
+                var chartData = {
+                "type":"bar",
+                "scale-x":{
+                    "values": recovery.items
+                },
+                "series":[
+                    {
+                        "values":result
+                    }
+                ]
+            }
+
+
+            zingchart.render({
+            id: "myChartrec",
+            data: chartData,
+            });
+        }
+
+            /*For Line Chart*/
+            function buildChartLinerec(){
+                var value = recovery.values
+                    var result = value.map(function (x) { 
+                    return parseInt(x, 10); 
+                    });
+                var chartData = {
+                "type":"line",
+                "scale-x":{
+                    "values": recovery.items
+                },
+                "series":[
+                    {
+                        "values":result
+                    }
+                ]
+            }
+
+
+            zingchart.render({
+            id: "myLinerec",
+            data: chartData,
+            });
+        }
+
+        /*Display Total case Data*/
+        var death ={	
+            'items':[],
+            'values':[],
+        }
+
+        var rec ={	
+            'items':[],
+            'values':[],
+        }
+
+        var objId = "{{covid_data}}"
+        console.log(objId);
+        var dataURL = `/map_datadet/${objId}/`
+
+        /*Ajax Calling*/
+        $.ajax({
+            method:'GET',
+            url:dataURL,
+            success:function(response){
+                console.log('RESPONSE:', response)
+                for (var i in response){
+
+                    var key2 = Object.keys(response[i])[0]
+                    var value2 = Object.values(response[i])[0]
+                    
+
+                    death.items.push(key2)
+                    death.values.push(value2)
+
+                
+                }
+                console.log('death:', death)
+            
+                buildChartdet()
+                buildChartLinedet()
+            }
+            
+        })
+        /*For Bar Chart*/
+
+        function buildChartdet(){
+            var value = death.values
+                var result = value.map(function (x) { 
+                return parseInt(x, 10); 
+                });
+            var chartData = {
+            "type":"bar",
+            "scale-x":{
+                "values": death.items
+            },
+            "series":[
+                {
+                    "values":result
+                }
+            ]
+        }
+
+
+        zingchart.render({
+        id: "myChartdet",
+        data: chartData,
+        });
+        }
+
+        /*For Line Chart*/
+        function buildChartLinedet(){
+            var value = death.values
+                var result = value.map(function (x) { 
+                return parseInt(x, 10); 
+                });
+            var chartData = {
+            "type":"line",
+            "scale-x":{
+                "values": death.items
+            },
+            "series":[
+                {
+                    "values":result
+                }
+            ]
+        }
+
+
+        zingchart.render({
+        id: "myLinedet",
+        data: chartData,
+        });
+        }
+
+
+   
+    </script>
+
+    {% endblock %} 
+
+

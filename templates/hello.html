@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    
+    <title>Pollster</title>
+  </head>
+  <body>
+
+    
+   
+    <h3 style="text-align: center;">Testing</h3>
+    <div id="myChart" style="width: 60%; margin:auto;"></div>
+    <h3 style="text-align: center;">Cases</h3>
+    <div id="myChart1" style="width: 60%; margin:auto;"></div>
+    <h3 style="text-align: center;">Recovery</h3>
+    <div id="myChart2" style="width: 60%; margin:auto;"></div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+
+      var state ={	
+        'items':[],
+        'values':[],
+      }
+        
+        var dataURL = `getdata/`
+        $.ajax({
+          method:'GET',
+          url:dataURL,
+          success:function(response){
+            console.log('RESPONSE:', response)
+            for (var i in response){
+              var key = Object.keys(response[i])[0]
+              var value = Object.values(response[i])[0]
+      
+              state.items.push(key)
+              state.values.push(value)
+            }
+      
+            console.log('STATE:', state)
+            
+            buildChart();
+            buildChart1();
+            buildChart2();
+          }
+        })
+        
+        function buildChart(){
+          var value = state.values
+          
+            var result = value.map(function (x) { 
+              return parseInt(x, 10); 
+            });
+          var chartData = {
+          "type":"bar",
+          "scale-x":{
+            "values":state.items
+          },
+          "series":[
+            {
+              "values": result
+            }
+          ]
+        }
+    
+    
+        zingchart.render({
+          id: "myChart",
+          data: chartData,
+        });
+      }
+
+      function buildChart1(){
+        var chartData = {
+        "type":"line",
+        "scale-x":{
+          "values":state.items
+        },
+        "series":[
+          {
+            "values":state.values
+          }
+        ]
+      }
+  
+  
+      zingchart.render({
+        id: "myChart1",
+        data: chartData,
+      });
+    }
+
+    function buildChart2(){
+      var chartData = {
+      "type":"line",
+      "scale-x":{
+        "values":state.items
+      },
+      "series":[
+        {
+          "values":state.values
+        }
+      ]
+    }
+
+
+    zingchart.render({
+      id: "myChart2",
+      data: chartData,
+    });
+  }
+      
+
+
+    </script>
+
+
+  </body>
+</html>

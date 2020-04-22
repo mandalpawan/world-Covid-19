@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block conatent %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/update.css' %}">
+
+<div class="container main-part">
+    <h4>Upadate Log</h4>
+    <p>We have created this section so that you can see all the changes and improvements that we are making in the tool.</p>
+
+    {% for data in update_data %}
+    {% if data.feature %}
+    <div class="improve">
+        <p class="feature">Feature</p>
+        <h5>{{data.subheader}}</h6>
+          <p>{{data.content}}</p>
+    </div>
+    {% elif data.improvement %} 
+    <div class="improve">
+      <p class="improve-tag">Improvement</p>
+      <h5>{{data.subheader}} </h6>
+        <p>{{data.content}}</p>
+  </div>
+
+  {% elif data.fix %}  
+  <div class="improve">
+      <p class="fix">Fix</p>
+      <h5>{{data.subheader}}</h6>
+        <p>{{data.content}}</p>
+  </div>
+
+  {% endif %}
+  {% endfor %}
+
+  </div>
+
+  {% endblock %}

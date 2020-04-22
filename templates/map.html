@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block conatent %}
+
+
+    <div class="container main-part">
+        <h4>Update soon...</h4>
+
+        <form action="{% url 'map_dire' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="name"><br>
+            <input type="email" name="email_"><br>
+            <input type="text" name="message"><br>
+           <input type="submit" value="submit">
+        </form>
+            <a href="{% url 'save_data' %}"> data upload</a>
+        </div>
+
+
+{% endblock %}

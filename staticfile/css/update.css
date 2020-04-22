@@ -1,0 +1,36 @@
+.improve{
+    width: 100%;
+    height: auto;
+    background-color: rgba(124, 124, 124,0.2);
+    border-radius: 10px;
+    border: 1px solid rgb(124, 124, 124,0.2);
+    padding: 10px;
+    margin: 15px;
+}
+
+.feature{
+    background-color: rgb(20, 241, 20);
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.fix{
+    background-color: rgb(230, 30, 30);
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.improve-tag{
+    background-color: rgb(27, 162, 240);
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+    display: inline-block;
+}
